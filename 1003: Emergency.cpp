@@ -4,7 +4,7 @@
 using namespace std;
 
 struct MGraph {
-	int **Edge;
+	int **Edge;//if no edge between a and b, Edge[a][b] = INF
 	int *teams;// teams[] record the number of rescue teams in the i-th city
 	int *dist;// dist[] record the shortest distance from source to i-th vertex(city)
 	int *sum;// sum[] record the biggest sum of rescue teams from source to i-th city
@@ -12,7 +12,6 @@ struct MGraph {
 	int *pre;// record the previous vertex of i-th vertex in the shortest path, its function like path[]
 	int N;//  
 	int M;//number of edges
-	//if no edge between a and b, Edge[a][b] = INF
 };
 
 void CreateGraph(MGraph &G, int &source, int &dest)
@@ -46,8 +45,6 @@ void CreateGraph(MGraph &G, int &source, int &dest)
 	}
 }
 //Dijkstra Alg
-//path[], dist[], set[]
-//return the number of same shortest pathes
 void Dijkstra(MGraph G, int s)
 {
 	int *set = new int[G.N];
@@ -120,6 +117,15 @@ int main()
 	cout << G.count[dest] << " " << G.sum[dest] << endl;
 
 	//remember to free G's memory
+	for (int i = 0; i != G.N; ++i) {
+		delete[]G.Edge[i];
+	}
+	delete[]G.Edge;
+	delete[]G.dist;
+	delete[]G.teams;
+	delete[]G.count;
+	delete[]G.pre;
+	delete[]G.sum;
 }
 
 
