@@ -3,7 +3,6 @@
 #define INF 65535
 using namespace std;
 
-const int MAXSIZE = 500;
 struct MGraph {
 	int **Edge;
 	int *teams;// teams[] record the number of rescue teams in the i-th city
@@ -119,7 +118,6 @@ int main()
 	
 	Dijkstra(G, source);
 	cout << G.count[dest] << " " << G.sum[dest] << endl;
-	//PrintPath(path, dest);
 
 	//remember to free G's memory
 }
