@@ -24,6 +24,7 @@ int main()
 	T = new node[N + 1];
 	gen = new int[N + 1];
 
+	//step 1. process input
 	for (int i = 0; i != M; ++i) {
 		cin >> pid >> K;
 		for (int j = 0; j != K; ++j) {
@@ -33,6 +34,7 @@ int main()
 		}
 	}
 
+	//step 2. calculate every node's level
 	T[1].level = 1;//root
 	Q.push(1);//root
 	while (!Q.empty()) {
@@ -49,6 +51,9 @@ int main()
 	//for (int i = 1; i != N + 1; ++i) {
 	//	cout << i << " " << T[i].parent << " " << T[i].level << endl;
 	//}
+
+
+	//step 3. calculate the number of nodes of each level
 
 	//initialize gen[]
 	for (int i = 1; i != N + 1; ++i) {
@@ -68,6 +73,7 @@ int main()
 	//	cout << gen[i] << " ";
 	//}
 	
+	//step 4. find the largest population number and the level of the corresponding generation
 	int maxNodes = 0;
 	int level = 0;
 	for (int i = 1; i <= maxLevel; ++i) {
@@ -79,4 +85,6 @@ int main()
 
 	cout << maxNodes << " " << level << endl;
 
+	delete[]T;
+	delete[]gen;
 }
