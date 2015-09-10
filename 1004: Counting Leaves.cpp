@@ -16,7 +16,7 @@ int main()
 	int N, M;
 	int pid, K, cid; //parent id, K, child id
 	tree T;
-	int *gen; // nodes of every generation
+	int *gen; //un-son nodes of every generation
 	queue<int> Q;
 	int f;//front of queue
 
@@ -58,7 +58,7 @@ int main()
 	//}
 
 
-	//step 3. calculate the number of nodes of each level
+	//step 3. calculate the number of un-son-nodes of each level
 
 	//initialize gen[]
 	for (int i = 1; i != N + 1; ++i) {
@@ -80,7 +80,7 @@ int main()
 	//	cout << gen[i] << " ";
 	//}
 
-	//step 4. find the largest population number and the level of the corresponding generation
+	//step 4. output
 	for (int i = 1; i != maxLevel; ++i) {
 		cout << gen[i] << " ";
 	}
